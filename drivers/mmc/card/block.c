@@ -1219,7 +1219,11 @@ static int mmc_blk_err_check(struct mmc_card *card,
 
 	/* if general error occurs, retry the write operation. */
 	if (gen_err) {
+<<<<<<< HEAD
 		pr_warn("%s: retrying write for general error\n",
+=======
+		pr_warning("%s: retrying write for general error\n",
+>>>>>>> 5533699708b66a5dfe85d8298d971bb41a799c8a
 				req->rq_disk->disk_name);
 		return MMC_BLK_RETRY;
 	}
