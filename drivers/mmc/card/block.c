@@ -1219,11 +1219,7 @@ static int mmc_blk_err_check(struct mmc_card *card,
 
 	/* if general error occurs, retry the write operation. */
 	if (gen_err) {
-<<<<<<< HEAD
 		pr_warn("%s: retrying write for general error\n",
-=======
-		pr_warning("%s: retrying write for general error\n",
->>>>>>> 5533699708b66a5dfe85d8298d971bb41a799c8a
 				req->rq_disk->disk_name);
 		return MMC_BLK_RETRY;
 	}
@@ -2119,15 +2115,10 @@ static int mmc_blk_issue_rq(struct mmc_queue *mq, struct request *req)
 		/* complete ongoing async transfer before issuing discard */
 		if (card->host->areq)
 			mmc_blk_issue_rw_rq(mq, NULL);
-<<<<<<< HEAD
 #ifdef CONFIG_MMC_SECDISCARD
-		if (req->cmd_flags & REQ_SECURE)
-=======
-		if (req->cmd_flags & REQ_SECURE &&
-			!(card->quirks & MMC_QUIRK_SEC_ERASE_TRIM_BROKEN))
->>>>>>> 231bd406f6ddb6c08b773d0148bb120c2080e241
-			ret = mmc_blk_issue_secdiscard_rq(mq, req);
-		else
+	if (req->cmd_flags & REQ_SECURE)
+		ret = mmc_blk_issue_secdiscard_rq(mq, req);
+	else
 #endif
 			ret = mmc_blk_issue_discard_rq(mq, req);
 	} else if (req && req->cmd_flags & REQ_FLUSH) {
@@ -2504,11 +2495,9 @@ static const struct mmc_fixup blk_fixups[] =
 	MMC_FIXUP(CID_NAME_ANY, CID_MANFID_MICRON, 0x200, add_quirk_mmc,
 		  MMC_QUIRK_LONG_READ_TIME),
 
-<<<<<<< HEAD
 	/* Some INAND MCP devices advertise incorrect timeout values */
 	MMC_FIXUP("SEM04G", 0x45, CID_OEMID_ANY, add_quirk_mmc,
 		  MMC_QUIRK_INAND_DATA_TIMEOUT),
-=======
 	/*
 	 * On these Samsung MoviNAND parts, performing secure erase or
 	 * secure trim can result in unrecoverable corruption due to a
@@ -2530,7 +2519,6 @@ static const struct mmc_fixup blk_fixups[] =
 		  MMC_QUIRK_SEC_ERASE_TRIM_BROKEN),
 	MMC_FIXUP("VZL00M", CID_MANFID_SAMSUNG, CID_OEMID_ANY, add_quirk_mmc,
 		  MMC_QUIRK_SEC_ERASE_TRIM_BROKEN),
->>>>>>> 231bd406f6ddb6c08b773d0148bb120c2080e241
 
 	END_FIXUP
 };

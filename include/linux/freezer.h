@@ -133,7 +133,6 @@ static inline void freezer_count(void)
 	try_to_freeze();
 }
 
-<<<<<<< HEAD
 /* DO NOT ADD ANY NEW CALLERS OF THIS FUNCTION */
 static inline void freezer_count_unsafe(void)
 {
@@ -142,8 +141,6 @@ static inline void freezer_count_unsafe(void)
 	try_to_freeze_unsafe();
 }
 
-=======
->>>>>>> 5616d0817d5d94745747d5cc68610d5bdefc98c9
 /**
  * freezer_should_skip - whether to skip a task when determining frozen
  *			 state is reached

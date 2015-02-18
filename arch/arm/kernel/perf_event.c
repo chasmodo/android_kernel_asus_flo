@@ -343,23 +343,13 @@ validate_event(struct pmu_hw_events *hw_events,
 	struct hw_perf_event fake_event = event->hw;
 	struct pmu *leader_pmu = event->group_leader->pmu;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 	if (is_software_event(event))
 		return 1;
 
-	if (event->pmu != leader_pmu || event->state <= PERF_EVENT_STATE_OFF)
-=======
-=======
-	if (is_software_event(event))
-		return 1;
-
->>>>>>> edb53115014778b11739154033d04e99dc30ab6c
 	if (event->pmu != leader_pmu || event->state < PERF_EVENT_STATE_OFF)
 		return 1;
 
 	if (event->state == PERF_EVENT_STATE_OFF && !event->attr.enable_on_exec)
->>>>>>> 41a1b6ad4c9a74d60c214f8b42bf3c22aad5a20d
 		return 1;
 
 	return armpmu->get_event_idx(hw_events, &fake_event) >= 0;

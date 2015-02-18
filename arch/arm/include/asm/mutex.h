@@ -9,7 +9,6 @@
 #define _ASM_MUTEX_H
 /*
  * On pre-ARMv6 hardware this results in a swp-based implementation,
-<<<<<<< HEAD
  * which is the most efficient. For ARMv6+, we have exclusive memory
  * accessors and use atomic_dec to avoid the extra xchg operations
  * on the locking slowpaths.
@@ -18,11 +17,5 @@
 #include <asm-generic/mutex-xchg.h>
 #else
 #include <asm-generic/mutex-dec.h>
-=======
- * which is the most efficient. For ARMv6+, we emit a pair of exclusive
- * accesses instead.
- */
-#include <asm-generic/mutex-xchg.h>
->>>>>>> 231bd406f6ddb6c08b773d0148bb120c2080e241
 #endif
 #endif	/* _ASM_MUTEX_H */

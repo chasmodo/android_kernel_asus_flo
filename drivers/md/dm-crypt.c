@@ -1236,25 +1236,7 @@ static int crypt_decode_key(u8 *key, char *hex, unsigned int size)
 	return 0;
 }
 
-<<<<<<< HEAD
-/*
- * Encode key into its hex representation
- */
-static void crypt_encode_key(char *hex, u8 *key, unsigned int size)
-{
-	unsigned int i;
-
-	for (i = 0; i < size; i++) {
-		sprintf(hex, "%02x", *key);
-		hex += 2;
-		key++;
-	}
-}
-
 static void crypt_free_tfms(struct crypt_config *cc)
-=======
-static void crypt_free_tfms(struct crypt_config *cc, int cpu)
->>>>>>> 5533699708b66a5dfe85d8298d971bb41a799c8a
 {
 	unsigned i;
 
@@ -1704,7 +1686,7 @@ static int crypt_map(struct dm_target *ti, struct bio *bio,
 }
 
 static void crypt_status(struct dm_target *ti, status_type_t type,
-			 char *result, unsigned int maxlen)
+			char *result, unsigned int maxlen)
 {
 	struct crypt_config *cc = ti->private;
 	unsigned i, sz = 0;

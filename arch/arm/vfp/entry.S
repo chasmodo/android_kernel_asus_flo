@@ -7,16 +7,6 @@
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 as
  * published by the Free Software Foundation.
-<<<<<<< HEAD
- *
- * Basic entry code, called from the kernel's undefined instruction trap.
- *  r0  = faulted instruction
- *  r2  = faulted PC+4
- *  r9  = successful return
- *  r10 = thread_info structure
- *  lr  = failure return
-=======
->>>>>>> d750339b3bfbd01d4403739c90881adc0961720a
  */
 #include <asm/thread_info.h>
 #include <asm/vfpmacros.h>

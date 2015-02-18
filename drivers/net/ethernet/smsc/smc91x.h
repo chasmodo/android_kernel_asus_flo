@@ -209,7 +209,6 @@ SMC_outw(u16 val, void __iomem *ioaddr, int reg)
 #define RPC_LSA_DEFAULT		RPC_LED_TX_RX
 #define RPC_LSB_DEFAULT		RPC_LED_100_10
 
-<<<<<<< HEAD
 #elif	defined(CONFIG_ARCH_VERSATILE)
 
 #define SMC_CAN_USE_8BIT	1
@@ -241,8 +240,6 @@ SMC_outw(u16 val, void __iomem *ioaddr, int reg)
 
 #define SMC_IRQ_FLAGS		IRQF_TRIGGER_HIGH
 
-=======
->>>>>>> 3d10deb41ecfaacc7f0f40de9a676b9ab4843ea6
 #elif defined(CONFIG_MN10300)
 
 /*
