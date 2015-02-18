@@ -60,8 +60,12 @@
 #include <linux/pid.h>
 #include <linux/nsproxy.h>
 #include <linux/ptrace.h>
+<<<<<<< HEAD
 #include <linux/freezer.h>
 #include <linux/bootmem.h>
+=======
+#include <linux/hugetlb.h>
+>>>>>>> edb53115014778b11739154033d04e99dc30ab6c
 
 #include <asm/futex.h>
 
@@ -486,7 +490,7 @@ again:
 	} else {
 		key->both.offset |= FUT_OFF_INODE; /* inode-based key */
 		key->shared.inode = page_head->mapping->host;
-		key->shared.pgoff = page_head->index;
+		key->shared.pgoff = basepage_index(page);
 	}
 
 	get_futex_key_refs(key); /* implies MB (B) */
