@@ -748,9 +748,15 @@ static int __init vfp_init(void)
 			if ((fmrx(MVFR1) & 0x000fff00) == 0x00011100)
 				elf_hwcap |= HWCAP_NEON;
 #endif
+<<<<<<< HEAD
 			if ((fmrx(MVFR1) & 0xf0000000) == 0x10000000 ||
 			    (read_cpuid_id() & 0xff00fc00) == 0x51000400)
+=======
+#ifdef CONFIG_VFPv3
+			if ((fmrx(MVFR1) & 0xf0000000) == 0x10000000)
+>>>>>>> 8da04d3a3b2358e1007333aea175eb3797682f43
 				elf_hwcap |= HWCAP_VFPv4;
+#endif
 		}
 	}
 

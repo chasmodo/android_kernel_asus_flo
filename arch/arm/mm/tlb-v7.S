@@ -39,6 +39,7 @@ ENTRY(v7wbi_flush_user_tlb_range)
 	mov	r0, r0, lsr #PAGE_SHIFT		@ align address
 	mov	r1, r1, lsr #PAGE_SHIFT
 <<<<<<< HEAD
+<<<<<<< HEAD
 #ifdef CONFIG_ARCH_MSM8X60
 	mov	r0, r0, lsl #PAGE_SHIFT
 =======
@@ -46,7 +47,12 @@ ENTRY(v7wbi_flush_user_tlb_range)
 	mov	r3, #0
 >>>>>>> d750339b3bfbd01d4403739c90881adc0961720a
 #else
+=======
+>>>>>>> 8da04d3a3b2358e1007333aea175eb3797682f43
 	asid	r3, r3				@ mask ASID
+#ifdef CONFIG_ARM_ERRATA_720789
+	ALT_SMP(W(mov)	r3, #0	)
+	ALT_UP(W(nop)		)
 #endif
 	orr	r0, r3, r0, lsl #PAGE_SHIFT	@ Create initial MVA
 #endif
