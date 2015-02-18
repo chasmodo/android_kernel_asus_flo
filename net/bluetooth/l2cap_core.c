@@ -2766,6 +2766,7 @@ void l2cap_amp_move_init(struct sock *sk)
 	if (!(l2cap_pi(sk)->conn->fc_mask & L2CAP_FC_A2MP) || !enable_hs)
 		return;
 
+<<<<<<< HEAD
 	if (l2cap_pi(sk)->amp_id == 0) {
 		if (l2cap_pi(sk)->amp_pref != BT_AMP_POLICY_PREFER_AMP)
 			return;
@@ -2781,6 +2782,16 @@ void l2cap_amp_move_init(struct sock *sk)
 		l2cap_send_move_chan_req(l2cap_pi(sk)->conn,
 					l2cap_pi(sk), l2cap_pi(sk)->scid, 0);
 		l2cap_sock_set_timer(sk, L2CAP_MOVE_TIMEOUT);
+=======
+		if (type != L2CAP_CONF_RFC)
+			continue;
+
+		if (olen != sizeof(rfc))
+			break;
+
+		memcpy(&rfc, (void *)val, olen);
+		goto done;
+>>>>>>> bbdd3cb99b1007eb350e62dcf9d8d94912194a08
 	}
 }
 
