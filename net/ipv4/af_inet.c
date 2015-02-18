@@ -256,10 +256,15 @@ void build_ehash_secret(void)
 		get_random_bytes(&rnd, sizeof(rnd));
 	} while (rnd == 0);
 
+<<<<<<< HEAD
 	if (cmpxchg(&inet_ehash_secret, 0, rnd) == 0) {
 		get_random_bytes(&ipv6_hash_secret, sizeof(ipv6_hash_secret));
 		net_secret_init();
 	}
+=======
+	if (cmpxchg(&inet_ehash_secret, 0, rnd) == 0)
+		get_random_bytes(&ipv6_hash_secret, sizeof(ipv6_hash_secret));
+>>>>>>> e433868d9a56637374ffca868cd9541628cf2549
 }
 EXPORT_SYMBOL(build_ehash_secret);
 
